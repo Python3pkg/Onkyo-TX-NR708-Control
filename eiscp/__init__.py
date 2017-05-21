@@ -14,7 +14,7 @@ __author__ = 'Will Nowak <wan@ccs.neu.edu>'
 import socket
 import logging
 
-import commands
+from . import commands
 
 
 ALL_COMMANDS = commands.ALL
@@ -87,7 +87,7 @@ class eISCP(object):
     Args:
        command: (string) ascii characters to be hexified for writing to serial
     """
-    if command not in self.command_dict.values():
+    if command not in list(self.command_dict.values()):
       raise InvalidCommandException("Specified command not in commands.py") 
 
   def writeCommand(self, command):
